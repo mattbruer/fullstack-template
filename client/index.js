@@ -1,7 +1,20 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
+import { Router } from 'react-router-dom';
+// import history from './history';
+import store from './store';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App';
+import history from './history';
 
-ReactDOM.render(
-  <div>Hello, world again!!</div>,
-  document.getElementById("app") // make sure this is the same as the id of the div in your index.html
+const container = document.getElementById('app');
+
+const root = createRoot(container);
+root.render(
+  <BrowserRouter history={history}>
+    <Provider store={store}>
+      <App tab="home" />
+    </Provider>
+  </BrowserRouter>
 );
